@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RecipeDetailScreen from './screens/RecipeDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }} >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

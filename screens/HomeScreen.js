@@ -1,33 +1,46 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { ScrollView } from "react-native-virtualized-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../constant/Colors";
 import { Title, IconButton } from 'react-native-paper';
 import TodaysPickSection from "../component/HomeScreen/TodaysPickSection";
 import FeaturedRecipeSection from "../component/HomeScreen/FeaturedRecipeSection";
+import { useState } from "react";
+import { Searchbar } from 'react-native-paper';
+import { Layout } from "../constant/Layout";
 
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation }) {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const onChangeSearch = query => setSearchQuery(query);
+
     return (
-        <SafeAreaView style={{ display: 'flex', backgroundColor: 'red' }}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                <View style={styles.topContainer}>
-                    <Title style={{ flex: 1 }}>
-                        Hello, User
-                    </Title>
-                    <IconButton
-                        icon="history"
-                        size={20}
-                        onPress={() => console.log('Pressed')}
+        <SafeAreaView style={styles.safeAreaView}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: 'white' }}>
+                <View style={styles.topSearchContainer}>
+                    <View style={styles.topContainer}>
+                        <Title style={{ flex: 1 }}>
+                            Hello, User
+                        </Title>
+                        <IconButton
+                            icon="history"
+                            size={20}
+                            onPress={() => console.log('Pressed')}
+                        />
+                        <Text>
+                            profile button
+                        </Text>
+                    </View>
+                    <Searchbar
+                        placeholder="Search"
+                        onChangeText={onChangeSearch}
+                        value={searchQuery}
+                        style={{ marginHorizontal: 30, height: 60, marginBottom: 20 }}
                     />
-                    <Text>
-                        profile butto
-                    </Text>
                 </View>
                 <View style={styles.mainContainer}>
-                    <Text>
-                        search bar
-                    </Text>
-                    <TodaysPickSection />
+                    <TodaysPickSection navigation={navigation}/>
                     <FeaturedRecipeSection />
                 </View>
             </ScrollView>
@@ -36,9 +49,13 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+    safeAreaView: {
+        display: 'flex',
+    },
+    topSearchContainer: { flexDirection: "column", backgroundColor: 'grey', borderBottomLeftRadius: 35, borderBottomRightRadius: 30, },
     topContainer: {
-        backgroundColor: 'white',
         flexDirection: 'row',
+        marginHorizontal: Layout.margin
     },
     mainContainer: {
         backgroundColor: 'white',

@@ -2,7 +2,7 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Title, IconButton, Button, Card } from 'react-native-paper';
-import { Layout } from "../../constant/layout";
+import { Layout } from "../../constant/Layout";
 import { FeaturedChips } from "./FeaturedChips";
 
 const DATA = [
@@ -21,9 +21,14 @@ const DATA = [
 ];
 
 const FeaturedListItem = ({ title }) => (
-    <Card style={{ marginHorizontal: 15 }}>
-        <View style={{ display: 'flex' }}>
-            <Text>{title}</Text>
+    <Card style={{ marginHorizontal: 15, height: 120 }}>
+        <View style={{ display: 'flex', }}>
+            <View style={{ display: 'flex' }}>
+
+            </View>
+            <View>
+
+            </View>
         </View>
     </Card>
 );
