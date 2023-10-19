@@ -12,6 +12,28 @@ export default function RecipeDetailScreen({ navigation }) {
     const handlePress = () => setExpanded(!expanded);
     const handleFav = () => setfavourite(!favourite);
 
+    const TimeSectionCard = ({ }) => (
+        <View style={styles.timeSection}>
+            <View style={{ flexDirection: 'col', alignItems: 'center' }}>
+                <Text>
+                    Prep time
+                </Text>
+                <Text>
+                    15 mins
+                </Text>
+            </View>
+            <View style={{ width: 3, backgroundColor: 'black', height: '80%' }} />
+            <View style={{ flexDirection: 'col', alignItems: 'center' }}>
+                <Text>
+                    Cook time
+                </Text>
+                <Text>
+                    20 mins
+                </Text>
+            </View>
+        </View>
+    )
+
     return (
         <View>
             <Appbar.Header mode="center-aligned">
@@ -24,26 +46,8 @@ export default function RecipeDetailScreen({ navigation }) {
                     Recipe Title asdasdasdasdsadasasdsadsadasdasdsadasdsa
                 </Title>
                 <Image style={{ height: 200, backgroundColor: "yellow", marginVertical: 30, borderRadius: 15 }} source={{ uri: 'https://picsum.photos/750' }} />
-                <View style={styles.timeSection}>
-                    <View style={{ flexDirection: 'col', alignItems: 'center' }}>
-                        <Text>
-                            Prep time
-                        </Text>
-                        <Text>
-                            15 mins
-                        </Text>
-                    </View>
-                    <View style={{ width: 3, backgroundColor: 'black', height: '80%' }} />
-                    <View style={{ flexDirection: 'col', alignItems: 'center' }}>
-                        <Text>
-                            Cook time
-                        </Text>
-                        <Text>
-                            20 mins
-                        </Text>
-                    </View>
-                </View>
-                <List.Section>
+                <TimeSectionCard />
+                <List.Section style={styles.listSection}>
                     <List.Accordion
                         style={{ borderTopLeftRadius: Layout.radius, borderTopRightRadius: Layout.radius }}
                         title="Ingedient"
@@ -55,7 +59,7 @@ export default function RecipeDetailScreen({ navigation }) {
                     <List.Accordion
                         theme={{
                             colors: {
-                                primary: 'red'
+                                primary: 'orange'
                             }
                         }}
                         expanded={expanded}
@@ -82,5 +86,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         flexDirection: 'row',
-    }
+    },
+    listSection: {
+        borderWidth: 2,
+        borderTopLeftRadius: Layout.radius,
+        borderTopRightRadius: Layout.radius,
+        overflow: 'hidden',
+        height: '100%'
+    },
 })

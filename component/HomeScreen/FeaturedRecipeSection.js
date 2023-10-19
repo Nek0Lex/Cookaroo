@@ -1,6 +1,4 @@
-// have chip and chosse list
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Title, IconButton, Button, Card } from 'react-native-paper';
 import { Layout } from "../../constant/Layout";
 import { FeaturedChips } from "./FeaturedChips";
@@ -20,21 +18,30 @@ const DATA = [
     },
 ];
 
-const FeaturedListItem = ({ title }) => (
-    <Card style={{ marginHorizontal: 15, height: 120 }}>
-        <View style={{ display: 'flex', }}>
-            <View style={{ display: 'flex' }}>
+export default function FeaturedRecipeSection({ navigation }) {
+
+    const handleToDetail = () => { navigation.navigate('RecipeDetail') }
+
+    const FeaturedListItem = ({ title }) => (
+        <Card style={{ marginHorizontal: 15, height: 120, overflow: "hidden" }} onPress={handleToDetail}>
+            <View style={styles.recipeCard}>
+                <View style={{ height: '100%', width: '30%', backgroundColor: 'black' }} />
+                <View style={{ flexDirection: 'col', margin: 15 }}>
+                    <Text>
+                        Recipe name
+                    </Text>
+                    <Text>
+                        Ingedient tag
+                    </Text>
+                    <Text>
+                        735 calories
+                    </Text>
+                </View>
 
             </View>
-            <View>
+        </Card>
+    );
 
-            </View>
-        </View>
-    </Card>
-);
-
-
-export default function FeaturedRecipeSection() {
     return (
         <View>
             <Title style={styles.title}>
@@ -66,5 +73,11 @@ const styles = StyleSheet.create({
     title: { marginStart: Layout.margin, marginTop: Layout.margin },
     mainContainer: {
         backgroundColor: 'white',
+    },
+    recipeCard: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexGrow: 1,
+        height: '100%',
     }
 });
