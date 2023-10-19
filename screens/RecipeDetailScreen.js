@@ -55,7 +55,7 @@ export default function RecipeDetailScreen({ navigation }) {
                     <List.Accordion
                         theme={{
                             colors: {
-                                primary: 'red'
+                                primary: 'orange'
                             }
                         }}
                         expanded={expanded}
